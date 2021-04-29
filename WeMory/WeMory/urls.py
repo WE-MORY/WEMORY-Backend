@@ -6,4 +6,5 @@ import user
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-jwt-auth/', include('user.urls')),
+    path('login/', include('user.urls')),
 ]
