@@ -43,6 +43,9 @@ class User(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(
         max_length=30,
     )
+    password_cofirm = models.CharField(
+        max_length=128,
+    )
     phone = models.CharField(
         max_length=12,
     )
