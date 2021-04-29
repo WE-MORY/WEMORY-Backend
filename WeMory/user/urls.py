@@ -8,4 +8,5 @@ urlpatterns = [
     path('verify/', verify_jwt_token),
     path('getCellCerti/', views.getCellCerti, name='getCellCerti'),
     path('executeCellCerti/', views.executeCellCerti, name='executeCellCerti'),
+    path('signup/', views.createUser, name="signup"),
 ]
