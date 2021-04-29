@@ -30,4 +30,3 @@ def getCellCerti(request):
 
     response = requests.post(url, data=json.dumps(data).encode('utf-8'), headers=headers)
     return HttpResponse(response)
-
