@@ -8,11 +8,13 @@ from .models import User
 
 from django.shortcuts import render
 from django.http import HttpResponse
-
+from django.conf import settings
+from django.core import serializers
 import requests
 import json
 
-headers = {'appkey': 'l7xxqenvTsl9kgFUTcSCdoNBDsgq2zMyFCZA', 'Content-Type': 'application/json'}
+API_KEY = "l7xxqenvTsl9kgFUTcSCdoNBDsgq2zMyFCZA"
+headers = {'appkey': API_KEY, 'Content-Type': 'application/json'}
 
 def getCellCerti(request):
     url = 'https://openapi.wooribank.com:444/oai/wb/v1/login/getCellCerti'
