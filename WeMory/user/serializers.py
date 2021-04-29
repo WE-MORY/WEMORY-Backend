@@ -12,6 +12,7 @@ class SignUpSerializer(serializers.Serializer):
     email = serializers.EmailField(required=True)
     username = serializers.CharField(required=True)
     password = serializers.CharField(required=True)
+    password_confirm = serializers.CharField(required=True)
     phone = serializers.CharField(required=True)
 
     def create(self, validated_data):

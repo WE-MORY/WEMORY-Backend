@@ -72,7 +72,8 @@ def signUp(request):
         serializer = SignUpSerializer(data=request.data)
         if not serializer.is_valid(raise_exception=True):
             return Response({"message": "Body 값이 잘못되었습니다."}, status=status.HTTP_409_CONFLICT)
-        
+        if serializer.validated_data['password'] != serializer.validated_data['password_confirm']:
+            return Response({"message": "Password가 일치하지 않습니다"}, status=status.HTTP_409_CONFLICT)
         if User.objects.filter(email=serializer.validated_data['email']).first() is None:
             serializer.save()
             return Response({"message": "ok"}, status=status.HTTP_201_CREATED)
