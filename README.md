@@ -10,5 +10,5 @@
 4. pip install django
 5. manage.py가 있는지 확인
 6. pip install -r requirements.txt
-7. secret.json 파일 WeMory/WeMory/에 넣기
+7. secret.json 파일 WeMory/WeMory/에 넣기 (즉, manage.py가 있는 위치)
 8. python3 manage.py runserver
