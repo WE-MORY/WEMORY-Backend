@@ -7,6 +7,9 @@ from .models import User
 User = get_user_model()
 JWT_PAYLOAD_HANDLER = api_settings.JWT_PAYLOAD_HANDLER
 JWT_ENCODE_HANDLER = api_settings.JWT_ENCODE_HANDLER
+JWT_ALLOW_REFRESH = api_settings.JWT_ALLOW_REFRESH
+JWT_DECODE_HANDLER = api_settings.JWT_DECODE_HANDLER
+JWT_PAYLOAD_GET_USER_ID_HANDLER = api_settings.JWT_PAYLOAD_GET_USER_ID_HANDLER
 
 class SignUpSerializer(serializers.Serializer):
     email = serializers.EmailField(required=True)
@@ -52,3 +55,4 @@ class SignInSerializer(serializers.Serializer):
             'email': user.email,
             'token': jwt_token
         }
+        

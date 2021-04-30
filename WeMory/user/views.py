@@ -1,7 +1,8 @@
-from rest_framework import status
+from rest_framework import status, viewsets, permissions
 from rest_framework.response import Response
-from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import AllowAny
+from rest_framework.decorators import api_view, permission_classes, authentication_classes
+from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 
 from .serializers import SignUpSerializer, SignInSerializer
 from .models import User
@@ -12,6 +13,11 @@ from django.conf import settings
 from django.core import serializers
 import requests
 import json
+
+
+from rest_framework_jwt.settings import api_settings
+JWT_DECODE_HANDLER = api_settings.JWT_DECODE_HANDLER
+JWT_PAYLOAD_GET_USER_ID_HANDLER = api_settings.JWT_PAYLOAD_GET_USER_ID_HANDLER
 
 API_KEY = "l7xxqenvTsl9kgFUTcSCdoNBDsgq2zMyFCZA"
 headers = {'appkey': API_KEY, 'Content-Type': 'application/json'}
@@ -72,3 +78,19 @@ def signIn(request):
             'token': serializer.data['token']
         }
         return Response(response, status=status.HTTP_200_OK)
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+@authentication_classes([JSONWebTokenAuthentication])
+def getUserId(request):
+    if request.method == 'GET':
+        token = request.META.get('HTTP_AUTHORIZATION', " ").split(' ')[1]
+        
+        payload = JWT_DECODE_HANDLER(token)
+        user_id = JWT_PAYLOAD_GET_USER_ID_HANDLER(payload)
+
+        response = {
+            "user_id": user_id
+        }
+        return Response(response, status=status.HTTP_200_OK)
+        
