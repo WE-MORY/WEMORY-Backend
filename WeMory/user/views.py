@@ -13,6 +13,7 @@ from django.conf import settings
 from django.core import serializers
 import requests
 import json
+import time
 
 
 from rest_framework_jwt.settings import api_settings
@@ -46,6 +47,7 @@ def getCellCerti(request):
     }
 
     response = requests.post(url, data=json.dumps(data).encode('utf-8'), headers=headers)
+    time.sleep(3)
     return HttpResponse(response, content_type='application/json')
 
 @api_view(['POST'])
