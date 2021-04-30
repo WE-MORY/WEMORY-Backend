@@ -161,3 +161,11 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = "user.User"
+
+DEFAULT_FILE_STORAGE = 'config.storages.MediaStorage'
+MEDIAFILES_LOCATION = 'media'
+AWS_S3_SECURE_URLS = False 
+AWS_QUERYSTRING_AUTH = False  
+AWS_STORAGE_BUCKET_NAME = 'mactto'
+AWS_S3_REGION_NAME = "ap-northeast-2"
+AWS_S3_SIGNATURE_VERSION = "s3v4"
