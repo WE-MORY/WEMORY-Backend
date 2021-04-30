@@ -16,5 +16,5 @@ class Post(models.Model):
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateField(auto_now_add=True)
     image = models.ImageField(blank=True, null=True, upload_to="Post/%Y/%m/")
-    author = models.ForeignKey("account.Account", on_delete=models.CASCADE, blank=True)
-    diary = models.ForeignKey(Diary, blank=False, null=False, on_delete=models.CASCADE)
+    author = models.ForeignKey("user.User", on_delete=models.CASCADE, blank=True)
+    diary = models.ForeignKey("diary.Diary", blank=False, null=False, on_delete=models.CASCADE)
