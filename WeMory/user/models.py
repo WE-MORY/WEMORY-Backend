@@ -79,7 +79,3 @@ class User(AbstractBaseUser, PermissionsMixin):
     def get_short_name(self):
         return self.email
     
-class Account(models.Model):
-    account_num = models.CharField(max_length=255, blank=False)
-    bank = models.CharField(max_length=30, blank=False)
-    money = models.PositiveIntegerField(default=0, null=True, blank=False)
