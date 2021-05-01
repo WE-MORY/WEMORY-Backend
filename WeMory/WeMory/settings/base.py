@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import datetime
+import json, os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -155,17 +156,25 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
+with open('./WeMory/settings/AWS_KEY.json', 'r') as f:
+    aws_info = json.load(f)
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = "user.User"
 
-DEFAULT_FILE_STORAGE = 'config.storages.MediaStorage'
 MEDIAFILES_LOCATION = 'media'
-AWS_S3_SECURE_URLS = False 
+AWS_S3_SECURE_URLS = False    
 AWS_QUERYSTRING_AUTH = False  
-AWS_STORAGE_BUCKET_NAME = 'mactto'
-AWS_S3_REGION_NAME = "ap-northeast-2"
-AWS_S3_SIGNATURE_VERSION = "s3v4"
+
+AWS_ACCESS_KEY_ID = aws_info['ACCESS_KEY'] 
+AWS_SECRET_ACCESS_KEY = aws_info['SECRET_ACCESS_KEY'] 
+AWS_REGION = aws_info['REGION']
+
+AWS_STORAGE_BUCKET_NAME = 'wemory'
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.%s.amazonaws.com' % (AWS_STORAGE_BUCKET_NAME,AWS_REGION)
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'path/to/store/my/files/')
