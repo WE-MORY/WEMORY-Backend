@@ -2,8 +2,8 @@ from django.db import models
 #from post.models import Post
 
 class Diary(models.Model):
-    created_at = models.DateField(auto_now_add=True)
-    updated_at = models.DateField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey("user.User", on_delete=models.CASCADE, blank=True)
 #    post = models.ForeignKey("post.Post", on_delete=models.CASCADE, blank=True)
     account_num = models.CharField(max_length=255, blank=False)
