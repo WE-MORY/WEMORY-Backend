@@ -16,6 +16,7 @@ def account_list(request):
         serializers=AccountSerializer(data=request.data)
         if serializers.is_valid(raise_exception=True):
             serializers.save()
+            
             return Response(serializers.data)
     else:
         diaries = Account.objects.all()
