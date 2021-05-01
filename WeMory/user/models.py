@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, PermissionsMixin
-from diary.models import Diary, Post
+from diary.models import Diary
+from post.models import Post
 from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
 
