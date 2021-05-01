@@ -1,14 +1,15 @@
 from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .serializers import DiarySerializer
+from .serializers import DiarySerializer, DiaryMoneySerializer
 from .models import Diary
+from post.models import Post
+from post.serializers import PostSerializer
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from django.http.response import JsonResponse
 from rest_framework.parsers import JSONParser 
 from rest_framework import status
-
 
 @api_view(['GET','POST'])
 @permission_classes([AllowAny])
@@ -33,7 +34,7 @@ def diary_detail(request, pk):
         return JsonResponse({'message': 'The diary does not exist'}, status=status.HTTP_404_NOT_FOUND) 
  
     if request.method == 'GET': 
-        diary_serializer = DiarySerializer(diary) 
+        diary_serializer = DiaryMoneySerializer(diary) 
         return Response(diary_serializer.data) 
  
     elif request.method == 'PUT': 
