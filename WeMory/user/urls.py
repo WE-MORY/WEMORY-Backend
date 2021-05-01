@@ -1,4 +1,5 @@
 from django.urls import path
+from django.conf.urls import url 
 from . import views
 
 
@@ -7,4 +8,5 @@ urlpatterns = [
     path('signup/', views.signUp, name="signup"),
     path('signin/', views.signIn, name="signin"),
     path('getUserId/', views.getUserId, name='getUserId'),
+    url(r'list/(?P<pk>[0-9]+)$', views.user_list, name="user-list"),
 ]

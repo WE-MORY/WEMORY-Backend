@@ -5,7 +5,7 @@ class Diary(models.Model):
     id = models.AutoField(primary_key=True)
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateField(auto_now_add=True)
-    user = models.ForeignKey("user.User", on_delete=models.CASCADE, blank=True)
+    user = models.ForeignKey("user.User", related_name="diary_list", on_delete=models.CASCADE, blank=True)
 #    post = models.ForeignKey("post.Post", on_delete=models.CASCADE, blank=True)
     account_num = models.CharField(max_length=255, blank=False)
     bank = models.CharField(max_length=30, blank=False)

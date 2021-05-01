@@ -4,7 +4,7 @@ from rest_framework.decorators import api_view, permission_classes, authenticati
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 
-from .serializers import SignUpSerializer, SignInSerializer
+from .serializers import SignUpSerializer, SignInSerializer, UserSerializer
 from .models import User
 
 from django.shortcuts import render
@@ -50,6 +50,7 @@ def getCellCerti(request):
     time.sleep(2)
     return HttpResponse(response, content_type='application/json')
 
+
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def signUp(request):
@@ -63,6 +64,7 @@ def signUp(request):
             serializer.save()
             return Response({"message": "ok"}, status=status.HTTP_201_CREATED)
         return Response({"message": "중복된 이메일입니다."}, status=status.HTTP_409_CONFLICT)
+
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
@@ -81,6 +83,7 @@ def signIn(request):
         }
         return Response(response, status=status.HTTP_200_OK)
 
+
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 @authentication_classes([JSONWebTokenAuthentication])
@@ -96,3 +99,12 @@ def getUserId(request):
         }
         return Response(response, status=status.HTTP_200_OK)
         
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+@authentication_classes([JSONWebTokenAuthentication])
+def user_list(request, pk):
+    if request.method == 'GET': 
+        users = User.objects.get(pk=pk)
+        user_serializers = UserSerializer(users)
+        return Response(user_serializers.data)

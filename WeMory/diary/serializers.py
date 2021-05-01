@@ -25,3 +25,8 @@ class DiaryMoneySerializer(serializers.ModelSerializer):
         money_list = Post.objects.filter(diary=obj.id).values_list('received_money')
         return money_list
 
+
+class UserDiarySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Diary
+        fields = ('id', 'account_num', 'bank','image', 'title')
