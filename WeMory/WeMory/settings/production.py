@@ -2,6 +2,4 @@ from .base import *
 
 DEBUG = False
 
-ALLOWED_HOSTS = [
-    '.amazonaws.com',
-]
+ALLOWED_HOSTS = ['*']
