@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'user.apps.UserConfig',
     'diary.apps.DiaryConfig',
     'account.apps.AccountConfig',
+    'post.apps.PostConfig',
 
     # DRF
     'rest_framework',
