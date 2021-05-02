@@ -95,12 +95,12 @@ def getUserId(request):
         payload = JWT_DECODE_HANDLER(token)
         user_id = JWT_PAYLOAD_GET_USER_ID_HANDLER(payload)
 
-        user = User.objects.get(id=user_id)
-        token_serializer = UserSerializer(user)
+        #user = User.objects.get(id=user_id)
+        #token_serializer = UserSerializer(user)
 
         response = {
             "user_id": user_id,
-            "account_num": token_serializer.data['id']
+            "account_num": True
         }
         return Response(response, status=status.HTTP_200_OK)
         

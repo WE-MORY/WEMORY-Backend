@@ -5,3 +5,9 @@ class AccountSerializer(serializers.ModelSerializer):
     class Meta:
         model = Account
         fields = '__all__'
+
+
+class AccountIdSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Account
+        fields = ('id')
