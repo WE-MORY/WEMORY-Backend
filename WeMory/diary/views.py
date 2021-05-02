@@ -95,12 +95,14 @@ class PostViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         orderbyList = ['created_at']
         q = self.request.GET.get('q')
-        key = self.request.GET.get('key','')
-
+        date = self.request.GET.get('date')
+        month = self.request.GET.get('month')
+        
         if q :
-            if key:
-                return Post.objects.filter(diary=q, created_at=str(key)).order_by(*orderbyList)
-            else:
-                return Post.objects.filter(diary=q).order_by(*orderbyList)
+            return Post.objects.filter(diary=q).order_by(*orderbyList)
+        elif month:
+            return Post.objects.filter(created_at__month__gte=month, diary=q).order_by(*orderbyList)
+        elif date:
+            return Post.objects.filter(created_at=date, diary=q).order_by(*orderbyList)
         else:
             return Post.objects.all().order_by(*orderbyList)
