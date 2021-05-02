@@ -2,7 +2,7 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "WeMory.settings.local")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "WeMory.settings.production")
 
 def main():
     """Run administrative tasks."""
