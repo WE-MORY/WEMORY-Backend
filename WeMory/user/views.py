@@ -47,7 +47,7 @@ def getCellCerti(request):
         }
     }
 
-    response = requests.post(url, data=json.dumps(data).encode('utf-8'), headers=headers)
+    response = requests.post(url, data=json.dumps(data).encode('utf-8'), headers=headers, verify=False)
     time.sleep(2)
     return HttpResponse(response, content_type='application/json')
 
