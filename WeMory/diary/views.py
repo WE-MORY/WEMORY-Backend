@@ -65,41 +65,25 @@ def goal_list(request):
         return Response(goal_serializers.data)
 
 
-# class PostList(generics.ListAPIView):
-#     serializer_class = PostSerializer
-
-#     def get_queryset(self):
-#         """
-#         This view should return a list of all the purchases
-#         for the currently authenticated user.
-#         """
-#         user = self.request.user
-#         return Purchase.objects.filter(purchaser=user)
-
-# class MoneyList(generics.ListAPIView):
-#     queryset = Post.objects.all()
-#     serializer_class = ProductSerializer
-#     filter_backends = [DjangoFilterBackend]
-#     filterset_fields = ['category', 'in_stock']
-
-
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
     filter_backends = (DjangoFilterBackend,)
     filter_fields = ('id', 'created_at', 'title', 'received_money')
     http_method_names = ['get']
- #   filterset_class = FundingKeywordFilter
- #   lookup_field = 'like_count'
+ 
 
     def get_queryset(self):
         orderbyList = ['created_at']
         q = self.request.GET.get('q')
-        key = self.request.GET.get('key','')
-
+        date = self.request.GET.get('date')
+        month = self.request.GET.get('month')
+        
         if q :
-            if key:
-                return Post.objects.filter(diary=q, created_at=str(key)).order_by(*orderbyList)
+            if month:
+                return Post.objects.filter(created_at__month__gte=month, diary=q).order_by(*orderbyList)
+            elif date:
+                return Post.objects.filter(created_at=date, diary=q).order_by(*orderbyList)
             else:
                 return Post.objects.filter(diary=q).order_by(*orderbyList)
         else:
