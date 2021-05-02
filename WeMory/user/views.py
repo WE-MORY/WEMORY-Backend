@@ -47,7 +47,7 @@ def getCellCerti(request):
         }
     }
 
-    response = requests.post(url, data=json.dumps(data).encode('utf-8'), headers=headers)
+    response = requests.post(url, data=json.dumps(data).encode('utf-8'), headers=headers, verify=False)
     time.sleep(2)
     return HttpResponse(response, content_type='application/json')
 
@@ -100,7 +100,7 @@ def getUserId(request):
 
         response = {
             "user_id": user_id,
-            "account_num": token_serializer.data['id']
+            "account_num": token_serializer.data
         }
         return Response(response, status=status.HTTP_200_OK)
         
