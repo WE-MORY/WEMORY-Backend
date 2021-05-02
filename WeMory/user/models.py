@@ -65,7 +65,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     )
     date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
 
-    account = models.OneToOneField('account.Account', on_delete=models.CASCADE, null = True)
+   
 
 
     objects = UserManager()
