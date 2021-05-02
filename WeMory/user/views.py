@@ -104,7 +104,7 @@ def getUserId(request):
 @permission_classes([AllowAny])
 @authentication_classes([JSONWebTokenAuthentication])
 def user_list(request, pk):
-    if request.method == 'GET': 
+    if request.method == 'GET':
         users = User.objects.get(pk=pk)
         user_serializers = UserSerializer(users)
         return Response(user_serializers.data)

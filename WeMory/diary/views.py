@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .serializers import DiarySerializer, DiaryMoneySerializer
-from .models import Diary
+from .serializers import DiarySerializer, DiaryMoneySerializer, GoalSerializer
+from .models import Diary, Goal
 from post.models import Post
 from post.serializers import PostSerializer
 from rest_framework.decorators import api_view, permission_classes
@@ -48,3 +48,18 @@ def diary_detail(request, pk):
     elif request.method == 'DELETE': 
         diary.delete() 
         return JsonResponse({'message': 'diary was deleted successfully!'}, status=status.HTTP_204_NO_CONTENT)
+
+
+@api_view(['GET','POST'])
+@permission_classes([AllowAny])
+def goal_list(request):
+    if request.method == "POST":
+        goal_serializers=GoalSerializer(data=request.data)
+        if goal_serializers.is_valid(raise_exception=True):
+            goal_serializers.save()
+            return Response(goal_serializers.data)
+    else:
+        goals = Goal.objects.all()
+        goal_serializers = GoalSerializer(goals, many=True)
+        return Response(goal_serializers.data)
+
