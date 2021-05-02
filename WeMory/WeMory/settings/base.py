@@ -46,6 +46,8 @@ INSTALLED_APPS = [
 
     #django_filters
     'django_filters',
+
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -168,15 +170,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = "user.User"
 
 MEDIAFILES_LOCATION = 'media'
-AWS_S3_SECURE_URLS = False    
+AWS_S3_SECURE_URLS = True
 AWS_QUERYSTRING_AUTH = False  
 
 AWS_ACCESS_KEY_ID = aws_info['ACCESS_KEY'] 
 AWS_SECRET_ACCESS_KEY = aws_info['SECRET_ACCESS_KEY'] 
 AWS_REGION = aws_info['REGION']
-
 AWS_STORAGE_BUCKET_NAME = 'wemory'
-AWS_S3_CUSTOM_DOMAIN = '%s.s3.%s.amazonaws.com' % (AWS_STORAGE_BUCKET_NAME,AWS_REGION)
+AWS_S3_CUSTOM_DOMAIN = 'wemory.s3-ap-northeast-1.amazonaws.com'
 AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
 }
