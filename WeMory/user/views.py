@@ -6,6 +6,7 @@ from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 
 from .serializers import SignUpSerializer, SignInSerializer, UserSerializer
 from .models import User
+from account.models import Account
 
 from django.shortcuts import render
 from django.http import HttpResponse
@@ -88,14 +89,18 @@ def signIn(request):
 @permission_classes([IsAuthenticated])
 @authentication_classes([JSONWebTokenAuthentication])
 def getUserId(request):
+    
     if request.method == 'GET':
         token = request.META.get('HTTP_AUTHORIZATION', " ").split(' ')[1]
-        
         payload = JWT_DECODE_HANDLER(token)
         user_id = JWT_PAYLOAD_GET_USER_ID_HANDLER(payload)
 
+        user = User.objects.get(id=user_id)
+        token_serializer = UserSerializer(user)
+
         response = {
-            "user_id": user_id
+            "user_id": user_id,
+            "account_num": token_serializer.data['id']
         }
         return Response(response, status=status.HTTP_200_OK)
         

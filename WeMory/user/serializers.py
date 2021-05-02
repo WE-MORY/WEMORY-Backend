@@ -4,6 +4,7 @@ from django.contrib.auth import get_user_model, authenticate
 from django.contrib.auth.models import update_last_login
 from .models import User
 from diary.serializers import UserDiarySerializer, GoalSerializer
+from account.serializers import AccountSerializer
 
 User = get_user_model()
 JWT_PAYLOAD_HANDLER = api_settings.JWT_PAYLOAD_HANDLER
@@ -60,7 +61,8 @@ class SignInSerializer(serializers.Serializer):
 
 class UserSerializer(serializers.ModelSerializer):
     diary_list = UserDiarySerializer(many=True, read_only=True)
+    account = AccountSerializer(many=False, read_only=True)
 
     class Meta:
         model = User
-        fields = ('id', 'email', 'username', 'phone', 'diary_list')
+        fields = ('id', 'email', 'username', 'phone', 'diary_list', 'account')
