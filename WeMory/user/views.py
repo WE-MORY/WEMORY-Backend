@@ -100,9 +100,9 @@ def getUserId(request):
 
         response = {
             "user_id": user_id,
-            "account_num": token_serializer.data
+            "account_num": token_serializer.data['id']
         }
-        return Response(response, status=status.HTTP_200_OK)
+        return Response(token_serializer.data, status=status.HTTP_200_OK)
         
 
 @api_view(['GET'])
