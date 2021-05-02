@@ -26,8 +26,8 @@ JWT_PAYLOAD_GET_USER_ID_HANDLER = api_settings.JWT_PAYLOAD_GET_USER_ID_HANDLER
 @permission_classes([AllowAny])
 def getCellCerti(request):
     if request.method == 'GET':
-        CellCerti = random.randint(0, 999999)
-        return Response({"CellCerti": CellCerti}, status=status.HTTP_200_OK)
+        CellCerti = random.randint(100000, 999999)
+        return Response({"CellCerti": str(CellCerti)}, status=status.HTTP_200_OK)
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
