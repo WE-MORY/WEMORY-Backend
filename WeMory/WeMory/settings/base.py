@@ -43,6 +43,9 @@ INSTALLED_APPS = [
     # DRF
     'rest_framework',
     'corsheaders',
+
+    #django_filters
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -72,6 +75,10 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
     ),
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 }
 
 JWT_AUTH = {
