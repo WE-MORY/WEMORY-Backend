@@ -13,5 +13,7 @@
 8. python3 manage.py makemigrations user
 9. python3 manage.py makemigrations account
 10. python3 manage.py makemigrations diary
-11. python3 manage.py migrate
-12. python3 manage.py runserver
+11. python3 manage.py makemigrations goal
+12. python3 manage.py makemigrations post
+13. python3 manage.py migrate
+14. python3 manage.py runserver
