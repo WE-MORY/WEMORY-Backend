@@ -61,7 +61,7 @@ class SignInSerializer(serializers.Serializer):
 
 class UserSerializer(serializers.ModelSerializer):
     diary_list = UserDiarySerializer(many=True, read_only=True)
-    #account = AccountSerializer(many=True, read_only=True)
+    account = AccountSerializer(many=True, read_only=True)
 
     class Meta:
         model = User
