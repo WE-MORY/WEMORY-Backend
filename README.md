@@ -17,7 +17,7 @@ WE-MORY Backend
 13. python3 manage.py migrate
 14. python3 manage.py runserver
 
-## 👩‍👦 Team [Frong]
+## 👩‍👦 Team [Back]
 
 - 17학번 사물인터넷학과 [김율희](https://github.com/yulhee741)
   - 일기 Model Rest API 설계 및 구현
