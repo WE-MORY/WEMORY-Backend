@@ -28,7 +28,7 @@ WE-MORY Backend
   - User Model Rest API 설계 및 구현
   - JWT 토큰 인증 방식 구현
   - AWS EC2 + GUNICORN + NGINX + S3 백엔드 서버 배포
-  - CloudFront + S3 프론트 파트 어플리케이션 정적 배포
+  - AWS CloudFront + S3 프론트 파트 어플리케이션 정적 배포
 
 ## 🔨Tech Stack
 
