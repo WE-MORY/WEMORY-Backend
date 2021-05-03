@@ -1,6 +1,4 @@
-# 🏡 WEMORY-Frontend
-
-WE-MORY Backend
+# 🏡 WE-MORY Backend
 
 ## 🖥 서버 실행법
 
