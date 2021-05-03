@@ -27,7 +27,8 @@ WE-MORY Backend
 - 18학번 컴퓨터공학과 [최세환](https://github.com/mactto3487)
   - User Model Rest API 설계 및 구현
   - JWT 토큰 인증 방식 구현
-  - AWS EC2 + GUNICORN + NGINX 사용해 백엔드 서버 배포
+  - AWS EC2 + GUNICORN + NGINX + S3 백엔드 서버 배포
+  - CloudFront + S3 프론트 파트 어플리케이션 정적 배포
 
 ## 🔨Tech Stack
 
@@ -35,6 +36,7 @@ WE-MORY Backend
 - Django
 - DjangoRestFramework
 - JWT
+- SQLite
 
 * 배포 스택
 - AWS EC2
