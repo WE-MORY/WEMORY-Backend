@@ -1,8 +1,8 @@
-# WEMORY-Backend
+# 🏡 WEMORY-Frontend
 
+WE-MORY Backend
 
 ## 🖥 서버 실행법
-
 
 1. WeMory 폴더로 진입
 2. python3 -m venv <가상환경이름>
@@ -16,3 +16,29 @@
 12. python3 manage.py makemigrations post
 13. python3 manage.py migrate
 14. python3 manage.py runserver
+
+## 👩‍👦 Team [Frong]
+
+- 17학번 사물인터넷학과 [김율희](https://github.com/yulhee741)
+  - 일기 Model Rest API 설계 및 구현
+  - 세부일기 Model API 설계 및 구현
+  - 계좌 Model Rest API 설계 및 구현
+
+- 18학번 컴퓨터공학과 [최세환](https://github.com/mactto3487)
+  - User Model Rest API 설계 및 구현
+  - JWT 토큰 인증 방식 구현
+  - AWS EC2 + GUNICORN + NGINX 사용해 백엔드 서버 배포
+
+## 🔨Tech Stack
+
+* 개발 스택
+- Django
+- DjangoRestFramework
+- JWT
+
+* 배포 스택
+- AWS EC2
+- AWS S3
+- GUNICORN
+- NGINX
+
