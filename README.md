@@ -1,5 +1,31 @@
 # 🏡 WE-MORY Backend
 
+## 💻 DEMO
+
+### 회원가입/메인/일기리스트
+
+<span>
+  <img src="./DEMO/Wemory_회원가입.gif" width="240px" />
+</span>
+
+<span>
+  <img src="./DEMO/Wemory_메인.gif" width="240px" />
+</span>
+
+<span>
+  <img src="./DEMO/Wemory_일기리스트.gif" width="240px" />
+</span>
+
+### 출금계좌 등록/출금 그래프
+
+<span>
+  <img src="./DEMO/Wemory_출금계좌등록.gif" width="240px" />
+</span>
+
+<span>
+  <img src="./DEMO/Wemory_출금그래프.gif" width="240px" />
+</span>
+
 ## 🖥 서버 실행법
 
 1. WeMory 폴더로 진입
