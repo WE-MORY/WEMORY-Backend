@@ -22,9 +22,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-3ws1@-ue7$ae8n^y@a+yb*=b^ftp&g$!@f!6zk=s-*kcxl7*+j'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-
-ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -46,6 +43,11 @@ INSTALLED_APPS = [
     # DRF
     'rest_framework',
     'corsheaders',
+
+    #django_filters
+    'django_filters',
+
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -75,6 +77,10 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
     ),
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 }
 
 JWT_AUTH = {
@@ -117,7 +123,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -165,15 +170,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = "user.User"
 
 MEDIAFILES_LOCATION = 'media'
-AWS_S3_SECURE_URLS = False    
+AWS_S3_SECURE_URLS = True
 AWS_QUERYSTRING_AUTH = False  
 
 AWS_ACCESS_KEY_ID = aws_info['ACCESS_KEY'] 
 AWS_SECRET_ACCESS_KEY = aws_info['SECRET_ACCESS_KEY'] 
 AWS_REGION = aws_info['REGION']
-
 AWS_STORAGE_BUCKET_NAME = 'wemory'
-AWS_S3_CUSTOM_DOMAIN = '%s.s3.%s.amazonaws.com' % (AWS_STORAGE_BUCKET_NAME,AWS_REGION)
+AWS_S3_CUSTOM_DOMAIN = 'wemory.s3-ap-northeast-1.amazonaws.com'
 AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
 }
